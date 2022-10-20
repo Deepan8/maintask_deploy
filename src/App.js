@@ -10,7 +10,7 @@ function App() {
   return (
     <>
     <Routes>
-        <Route path="/maintask_deploy" element={<Content />}/>
+        <Route path="/react_main_task" element={<Content />}/>
         <Route path="/Drug" element={<Drug/>}/> 
         <Route path="/Pharmacies" element={<Pharmacies/>}/> 
         <Route path="/Pro" element={<Pro/>}/> 
