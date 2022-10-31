@@ -1,4 +1,4 @@
-import { Nav, Bluebox, Question, Twobox, Doctorbox, Drugbox, Imagetag, Logoheading, Row, Buttontag, Contentag, Mainblue, Logoname,Links } from "../../../src/components/dashboard/landingpagestyle"
+import { Nav, Bluebox, Question, Twobox, Doctorbox, Drugbox, Imagetag, Logoheading, Row, Buttontag, Contentag, Mainblue, Logoname,Links,Totall } from "../../../src/components/dashboard/landingpagestyle"
 import Footer from "../common/footer";
 import { useNavigate } from "react-router-dom";
 import context from "../../../src/resources/string"
@@ -15,8 +15,9 @@ function Content() {
        
       }
     return (
-        <>
-            <Mainblue>
+        <Totall>
+            <Mainblue color="red">
+
                 <Nav>{context.Navcontent}</Nav>
                 <Bluebox>
                     <Question>
@@ -48,7 +49,7 @@ function Content() {
 
 
            
-        </>
+        </Totall>
     );
 }
 

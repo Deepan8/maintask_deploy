@@ -1,23 +1,26 @@
 import {
     Available, ContactDistance, AddressContact, Contact, Heading, Img, P, PharmacyName,
-    Tag, TagContent, Pharm, Links, Divsion
+    Tag, TagContent, Pharm, Links, Divsion,Detailedpharmacy
 } from "./PharmacyNamestyle"
 import { details } from '../../../resources/string'
 import call from '../../../assets/images/telephone.png'
 import location from '../../../assets/images/location.png'
 import About from "./Aboutpharmacy"
 import { useState } from "react"
-
+import Pharmacies from "./pharmacies"
 import { pharmacydetails } from "../../../resources/string"
-
+import Footer from "../../common/footer"
 export default function PharmacyNames() {
+
+    
     const [shown, isShown] = useState(false);
     const handleSubmit = event => {
         isShown(true);
     }
     return (
+<>
 
-<Divsion>
+    <Divsion>
             <Available>
                 <Heading>{details.avail}</Heading>
                 {pharmacydetails.map((details, i) => {
@@ -51,9 +54,11 @@ export default function PharmacyNames() {
                       )
                     })}
                 </Available>
-                <>
+                <Detailedpharmacy>
                     {shown && <About />}
-                </>
+                </Detailedpharmacy>
             </Divsion>
+          
+            </>
         )
     }

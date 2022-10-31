@@ -1,6 +1,15 @@
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import "../../resources/font.css"
+export const Totall = styled.div`
+   
+    margin: -8px;
+    
+`
 export const Nav = styled.div`
+font-family: "LexendDeca-Regular";
+
 background-color: grey;
 padding: 20px;
 color: white;
@@ -17,10 +26,25 @@ width: 100%;
 
 export const Question = styled.h1`
 margin: 50px 105px;
+font-family: "LexendDeca-Bold";
+font-size: 40px;
+@media (max-width:426px) {
+    margin: 0px 50px;
+    
+font-size: 20px;
+
+    }
 `;
 
 export const Logoname = styled.h2`
-
+font-family: "LexendDeca-Bold";
+font-size: 30px;
+@media (max-width:800px) {
+   font-size: 20px;
+  }
+  @media (max-width:620px) {
+   font-size: 15px;
+  }
 `;
 
 export const Contentag = styled.h4`
@@ -28,6 +52,7 @@ width: 90%;
 color: grey;
 padding: 20px;
 text-align: center;
+font-family: "LexendDeca-Regular";
 font-size: 100%;
 @media (max-width: 768px) {
 font-size: 65%;
@@ -41,6 +66,12 @@ justify-content:center;
 align-items: center;
 gap: 2%;
 padding: 15px;
+
+@media (max-width:426px) {
+    display: flex;
+flex-direction: column;
+gap:8px;
+}
 `;
 
 export const Doctorbox = styled.div`
@@ -51,6 +82,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 border-radius:5px;
+@media (max-width:426px) {
+    width:75%;
+    }
 `;
 
 export const Drugbox = styled.div`
@@ -61,10 +95,15 @@ display: flex;
 flex-direction: column;
 
 border-radius:5px;
+@media (max-width:426px) {
+    width:75%;
+    }
 `;
 
 export const Imagetag = styled.img`
-background-color:lightblue;
+background-color:rgb(235,242,255);
+border-radius: 7px;
+width: 28px;
 `;
 
 export const Logoheading = styled.div`
@@ -93,10 +132,12 @@ border-color: rgb(33,101,219);
 @media (max-width: 768px) {
 font-size: 60%;
 }
+
 `;
 export const Mainblue = styled.div`
 display: flex;
 flex-direction: column;
+
 `;
 export const Greypart = styled.div`
 display: flex;

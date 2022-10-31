@@ -14,7 +14,13 @@ font-size:10px;
 background-color:#27039e`
 
 export const Hydrocodone = styled.div`
-padding:3rem 4rem;`
+padding:3rem 4rem;
+@media (max-width:426px) {
+    padding:1rem 1rem;
+    
+}
+
+`
 
 export const Hydro = styled.div`
 padding:2rem;
@@ -28,11 +34,43 @@ gap:1rem;`
 export const Img = styled.img`
 object-fit:contain;`
 
+export const Heading = styled.h2`
+font-family: "LexendDeca-Bold";
+font-size: 25px;
+
+@media (max-width:426px) {
+    font-size: 15px;
+
+  }
+
+`
+export const Para = styled.p`
+font-family: "LexendDeca-Regular";
+font-size: 25px;
+
+@media (max-width:426px) {
+    font-size: 15px;
+
+  }
+
+`
+
 export const HydroContent = styled.div`
-display:flex;`
+display:flex;
+@media (max-width:426px) {
+   display: flex;
+   flex-direction: column;
+  }
+`
 
 export const Alerts = styled.div`
-width:65%;`
+width:65%;
+@media (max-width:426px) {
+    width:100%;
+
+
+  }
+`
 
 export const Inputs = styled.div`
 display:flex;
@@ -41,7 +79,13 @@ row-gap:1rem;
 width:40%;
 background-color:whitesmoke;
 border-radius:1rem;
-padding:3rem;`
+padding:3rem;
+@media (max-width:426px) {
+    width:70%;
+
+
+  }
+`
 
 export const AlertText = styled.p`
 width:85%`
@@ -74,7 +118,7 @@ display:flex;
 gap:6px;`
 
 export const Buttons = styled.button`
-width:50%;
+
 margin:8px 0;
 background-color:white;
 border:1px solid white;

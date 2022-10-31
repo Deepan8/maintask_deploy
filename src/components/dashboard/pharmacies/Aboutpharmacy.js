@@ -5,6 +5,10 @@ import {
     Information, P, H4, Fillup
 } from "./Aboutpharmacystyle"
 import { pharmacydetails } from "../../../resources/string";
+import {prefercost} from "../../../resources/string";
+import {standardcost} from "../../../resources/string";
+
+
 export default function About() {
     const { state } = useLocation();
     return (
@@ -46,24 +50,21 @@ export default function About() {
                                 <>
                                     <h3>{explain.prefer}</h3>
                                     <PreferOptions>
-                                        <li>{explain.plus}</li>
-                                        <li>{explain.plus}</li>
-                                        <li>{explain.connect}</li>
-                                        <li>{explain.connect}</li>
-                                        <li>{explain.smartplus}</li>
-                                        <li>{explain.smartplus}</li>
-                                        <li>{explain.longCare}</li>
-                                        <li>{explain.longCare}</li>
-                                        <li>{explain.select}</li>
+                                    {prefercost.map((item,i) => {
+                                                   return(
+                                                    <li>{item.name}</li>
+                                                   )
+                                                })}
                                     </PreferOptions>
                                 </>
                                 <>
                                     <h3>{explain.standard}</h3>
                                     <StandardOptions>
-                                        <li>{explain.plus}</li>
-                                        <li>{explain.plus}</li>
-                                        <li>{explain.connect}</li>
-                                        <li>{explain.connect}</li>
+                                    {standardcost.map((item,i) => {
+                                                   return(
+                                                    <li>{item.name}</li>
+                                                   )
+                                                })}
                                     </StandardOptions>
                                 </>
                             </Div>

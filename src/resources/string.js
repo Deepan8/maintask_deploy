@@ -93,6 +93,7 @@ export const pharmacydetails = [
         phone : '310-515-8425',
         distance : '2 miles away',
         tag : ['HOME INFUSION']
+      
     },
     {
         id:2,
@@ -160,3 +161,9 @@ export const pharmacydetails = [
     }
 
 ]
+export const prefercost = [{name :'Anthem MediBlue Plus(HMO)'},{name :'Anthem MediBlue Plus(HMO)'},{name :'Anthem MedBlue Connect(HMO D-SNP)'},
+                               {name:'Anthem MedBlue Connect(HMO D-SNP)'},{name :'Anthem MedBlue StartSmartPlus(HMO)'},{name:'Anthem MedBlue StartSmartPlus(HMO)'},{name:'Anthem MediBlue Lung Care(HMO C-SNP)'},{name :'Anthem MediBlue Lung Care(HMO C-SNP)'},
+                              {name : 'Anthem MedBlue Select(HMO)'}];
+
+export const standardcost =[{name :'Anthem MediBlue Plus(HMO)'},{name :'Anthem MediBlue Plus(HMO)'},{name :'Anthem MedBlue Connect(HMO D-SNP)'},
+                              {name:'Anthem MedBlue Connect(HMO D-SNP)'}];

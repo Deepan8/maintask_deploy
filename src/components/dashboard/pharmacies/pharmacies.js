@@ -1,10 +1,47 @@
-import { Nav, Bluebox, Coverage, Let, Question, Search, Tot, Whitebox, Titlebox, Combothree, Downcombothree, Downcombotwo, Row, Col, Buttontag, Bluecontent, InputType, Select } from "../../../components/dashboard/pharmacies/pharmaciesstyle"
+import { Nav, Bluebox, Coverage, Let, Question, Search, Tot, Whitebox, Titlebox, Combothree, Downcombothree, Downcombotwo, Row, Col, Buttontag, Bluecontent, InputType, Select,Selecttag,Inputbox ,Links,Totall} from "../../../components/dashboard/pharmacies/pharmaciesstyle"
 import context from "../../../resources/string"
 import { useRef, useState } from "react";
 import PharmacyNames from "./PharmacyName";
 import Footer from "../../common/footer";
+import { Pop } from "../../common/popup";
+import { Link } from "react-router-dom";
+import { Modal, Overlay, ModalContent, Popuphead, ButtonTag, Close, Buttons, PopupContent ,Buttonsno} from '../../common/popupstyle'
+import Dummy from "./dummy";
+import Closepop from "../../../assets/images/close.png"
+
 
 function Pharmacies() {
+
+  
+
+    const valid = useRef();
+    const [iserror,setiserror]= useState({});
+
+//  const handleClick = () => {
+
+
+//     setiserror(validate(valid.current.value))
+//  }
+//    const validate = (valid) => {
+//     const err={};
+    
+//     if (valid === '') {
+//     err.valid='please enter the positive number';
+//     }
+//    return err;
+//    }
+
+
+    const yearplan = useRef();
+    const [value, setValue] = useState("");
+    
+    const [modal, setModal] = useState(false);
+    const [empty, isEmpty] = useState(false);
+    const toggleModal = () => {
+        if (yearplan.current.value === 'Next Year')
+            setModal(!modal);
+    };
+
     const hours = useRef();
     const all = useRef();
     const standard = useRef();
@@ -12,25 +49,55 @@ function Pharmacies() {
 
     const [shown, isShown] = useState(false);
     const handleSubmit = event => {
+        setiserror(validate(valid.current.value))
 
         if (hours.current.checked === true && (all.current.checked === true || standard.current.checked === true ||
             prefer.current.checked === true)) {
             isShown(current => !current);
         }
     }
+    const validate = (valid) => {
+        const err={};
+        
+        if (valid === '') {
+        err.valid='please enter the pharmacy name';
+        }
+       return err;
+       }
     return (
-        <Tot>
+        <Totall>
 
-            <Nav>{context.Navcontent}</Nav>
+            <Nav color="white">{context.Navcontent}</Nav>
             <Bluebox>
                 <Bluecontent>
                     <Coverage>
-                        {context.Coveragearea}
-                        {context.Plancoverage}
-                        <select>
+                       <p> {context.Coveragearea}</p>
+                       <p>  {context.Plancoverage}</p>
+                        <Selecttag onChange={toggleModal} ref={yearplan}>
                             <option>Current Year</option>
                             <option>Next Year</option>
-                        </select>
+                        </Selecttag>
+                        <>
+                            {modal && (
+                                <Modal>
+                                    <Overlay onClick={toggleModal} ></Overlay>
+                                    <ModalContent>
+                                        <Close>
+                                            <Popuphead>You are Choosing Next Year as Plan Coverage </Popuphead>
+                                            <img src={Closepop} onClick={toggleModal} alt="close" />
+                                        </Close>
+                                        <PopupContent>
+                                            <p>By continuing this, You may Loose already added details of drugslist. </p>
+                                            <h5>Do you want to Continue?</h5>
+                                        </PopupContent>
+                                        <ButtonTag>
+                                            <Buttons onClick={toggleModal}>Yes</Buttons>
+                                            <Buttons className="buttons" onClick={toggleModal}>No</Buttons>
+                                        </ButtonTag>
+                                    </ModalContent>
+                                </Modal>
+                            )}
+                        </>
                     </Coverage>
 
                     <Question>
@@ -40,7 +107,8 @@ function Pharmacies() {
                         <Combothree>
                             <Titlebox>
                                 <h3>Pharmacy Name</h3>
-                                <input type='text'></input>
+                                <Inputbox type='text' ref={valid} ></Inputbox>
+                                <p>{iserror.valid}</p>
                             </Titlebox>
                             <Titlebox>
                                 <h3>Search Radius</h3>
@@ -71,7 +139,7 @@ function Pharmacies() {
                                 <h4>Extended Hours</h4>
                                 <Row>
                                     <input type="checkbox" ref={hours} id="vehicle1" name="vehicle1" value="Bike" />
-                                    <label for="vehicle1"> 24-Hour Pharmacy</label>
+                                    <label htmlFor="vehicle1"> 24-Hour Pharmacy</label>
                                 </Row>
                             </Downcombotwo>
                             <Downcombotwo>
@@ -79,19 +147,20 @@ function Pharmacies() {
                                 <Col>
                                     <Row>
                                         <input type="radio" n ref={all} id="html" name="fav_language" value="HTML" />
-                                        <label for="html">All</label>
+                                        <label htmlFor="html">All</label>
                                     </Row>
                                     <Row>
                                         <input type="radio" ref={standard} id="html" name="fav_language" value="HTML" />
-                                        <label for="html">Standard cost Share</label>
+                                        <label htmlFor="html">Standard cost Share</label>
                                     </Row>
                                     <Row>
                                         <input type="radio" ref={prefer} id="html" name="fav_language" value="HTML" />
-                                        <label for="html">Prefferd cost Share</label>
+                                        <label htmlFor="html">Prefferd cost Share</label>
                                     </Row>
                                 </Col>
                             </Downcombotwo>
-                            <Buttontag type="submit" value="Submit" onClick={handleSubmit}>Search Pharmacy</Buttontag>
+                            <Links to='PharmacyNames'>  <Buttontag type="submit" value="Submit" onClick={handleSubmit} >Search Pharmacy</Buttontag></Links>
+                            {/* <Dummy/> */}
 
                         </Downcombothree>
 
@@ -109,7 +178,7 @@ function Pharmacies() {
             {/* <PharmacyNames/> */}
             {shown && <PharmacyNames />}
             <Footer />
-        </Tot>
+        </Totall>
     );
 }
 

@@ -1,13 +1,13 @@
 import { provider } from "../../../resources/string"
 import { hydro } from "../../../resources/string"
-import { Nav, Bluebox, Coverage, Let, Question, Search, Tot, Whitebox, Titlebox, Combothree, Buttontag,  Img ,Inputtag,Information,TherapyInfo,Total} from "../provides/providerstyle"
+import { Nav, Bluebox, Coverage, Let, Question, Search, Tot, Whitebox, Titlebox, Combothree, Buttontag,  Img ,Inputtag,Information,TherapyInfo,Totall} from "../provides/providerstyle"
 import location from '../../../assets/images/location.png'
 import Footer from "../../common/footer"
 import home from '../../../assets/images/home.png'
 export default function Pro() {
 
     return (
-        <Total>
+        <Totall>
             <Nav><Img src={home} alt="home" />{provider.providerHeader}</Nav>
             <Bluebox>
 
@@ -37,6 +37,6 @@ export default function Pro() {
         <TherapyInfo>{hydro.therapy}</TherapyInfo>
         </Information>
          <Footer/>
-        </Total>
+        </Totall>
     )
 }

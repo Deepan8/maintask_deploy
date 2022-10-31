@@ -5,11 +5,19 @@ import { Link } from "react-router-dom"
 export const Available = styled.div`
 padding-left:3rem;
 width: 34rem;
+@media (max-width: 426px) {
+    width: 20rem;
+}
 `
 export const Divsion = styled.div`
 display:flex;
 flex-direction:row;
-width: 100%;`
+width: 100%;
+@media (max-width: 426px) {
+    display: flex;
+    flex-direction: column;
+}
+`
 export const Subdivsion = styled.div`
 width: 100%;`
 
@@ -96,3 +104,11 @@ text-decoration:none;`
 export const Links =styled(Link)`
 text-decoration:none;
 color:black;`
+
+ 
+export const Detailedpharmacy = styled.div`
+
+
+    
+
+`

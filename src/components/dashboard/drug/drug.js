@@ -1,64 +1,75 @@
-import { Nav,Bluebox,Coverage,Let,Question,SearchBar,Input,Button,Invalid} from "../../../components/dashboard/drug/drugstyle"
+import { Nav, Bluebox, Coverage, Let, Question, SearchBar, Input, Button, Invalid, Datasearch ,Totall} from "../../../components/dashboard/drug/drugstyle"
 import { useState } from "react";
 import context from "../../../resources/string"
 import Closepop from "../../../assets/images/close.png"
 import Hydroco from "./Hydro/hydro";
+import { useNavigate } from "react-router-dom";
 import Footer from "../../common/footer";
 import { Modal, Overlay, ModalContent, Popuphead, ButtonTag, Close, Buttons, PopupContent } from '../popupstyle'
 import { useRef } from "react";
-import {data} from "../Search/search_animal";
+import { data } from "../Search/search_animal";
+import Errorpage from "../pharmacies/errorpage/err";
+import { Pop } from "../../common/popup";
+import { Link } from "react-router-dom";
 function Drug() {
 
-const yearplan = useRef();
-const [value, setValue] = useState("");
-const [shown, isShown] = useState(false);
-const [modal, setModal] = useState(false);
-const [empty, isEmpty] = useState(false);
-const toggleModal = () => {
-    if (yearplan.current.value === 'Next Year')
+
+    const yearplan = useRef();
+    const [value, setValue] = useState("");
+    const [shown, isShown] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [empty, isEmpty] = useState(false);
+    const toggleModal = () => {
+        if (yearplan.current.value === 'Next Year')
+            setModal(!modal);
+    };
+
+    const navigate = useNavigate();
+
+   const handleClick = event => {
+        if (value === 'Hydrocodone') {
+            isShown(true);
+            isEmpty(false);
+        }
+       
+
+        else {
+            // isEmpty(true);
+            // isShown(false);
+            navigate("/Errorpage");
+        }
+
+
+    }
+    const handleSubmit = event => {
+        yearplan.current.value = 'Current Year';
         setModal(!modal);
-};
-const handleClick = event => {
-    if (value === 'Hydrocodone') {
-        isShown(true);
-        isEmpty(false);
-    }
-    else {
-        isEmpty(true);
-        isShown(false);
     }
 
-   
-}
-const handleSubmit = event => {
-    yearplan.current.value = 'Current Year';
-    setModal(!modal);
-}
+    const onChange = (event) => {
+        setValue(event.target.value);
+    };
 
-const onChange = (event) => {
-    setValue(event.target.value);
-};
+    const onSearch = (searchTerm) => {
+        setValue(searchTerm);
 
-const onSearch = (searchTerm) => {
-    setValue(searchTerm);
-   
 
-};
+    };
 
     return (
-        <>
-            
-          <Nav>{context.Navcontent}</Nav>
-          <Bluebox>
-                    <Coverage>
-                        {context.Coveragearea}
-                        {context.Plancoverage}
-                        <select onChange={toggleModal} ref={yearplan}>
-                       
+        <Totall>
+
+            <Nav>{context.Navcontent}</Nav>
+            <Bluebox>
+                <Coverage>
+                    {context.Coveragearea}
+                    {context.Plancoverage}
+                    <select onChange={toggleModal} ref={yearplan}>
+
                         <option>Current Year</option>
                         <option>Next Year</option>
-                        </select>
-                        <>
+                    </select>
+                    <>
                             {modal && (
                                 <Modal>
                                     <Overlay onClick={toggleModal} ></Overlay>
@@ -79,43 +90,52 @@ const onSearch = (searchTerm) => {
                                 </Modal>
                             )}
                         </>
-                    </Coverage>
-                    <Let>
+                </Coverage>
+                <Let>
                     {context.Letsbe}
-                   </Let>
-                   <Question>
+                </Let>
+                <Question>
                     {context.Drugquestion}
-                   </Question>
-                   <SearchBar>
-                   <Input type="text" value={value} onChange={onChange}/>
-                    <Button  onClick={handleClick} >Search</Button>
-              
+                </Question>
+                <SearchBar>
+                    <Input type="text" value={value} onChange={onChange}></Input>
+                    <Datasearch>
+                        {data
+                            .filter((item) => {
+                                const searchTerm = value.toLowerCase();
+                                const searchValue = item.search_value.toLowerCase();
+
+                                return (
+                                    searchTerm &&
+                                    searchValue.startsWith(searchTerm) &&
+                                    searchValue !== searchTerm
+                                );
+                            })
+                            .map((item) => (
+                                <div onClick={() => onSearch(item.search_value)}
+                                    key={item.search_value} >
+                                    {item.search_value}
+                                </div>
+                            ))}
+                    </Datasearch>
+                    <Button onClick={handleClick} >Search</Button>
+
                 </SearchBar>
 
-                    
-                </Bluebox> 
-                {data
-                    .filter((item) => {
-                        const searchTerm = value.toLowerCase();
-                        const searchValue = item.search_value.toLowerCase();
-                        
-                        return (
-                            searchTerm &&
-                            searchValue.startsWith(searchTerm) &&
-                            searchValue !== searchTerm
-                        );
-                    })
-                    .map((item) => (
-                        <div onClick={() => onSearch(item.search_value)}
-                            key={item.search_value} >
-                            {item.search_value}
-                        </div>
-                    ))}
-             
-                {shown &&  <Hydroco/> }
-                {empty && (<Invalid>Not Found</Invalid>)}
-                <Footer/>
-        </>
+
+            </Bluebox>
+
+
+           
+
+          
+           {shown && <Hydroco /> }
+
+            {empty && <Errorpage />}
+
+            {/* {empty && ( <Link to='/Errorpage'></Link> )} */}
+            <Footer />
+        </Totall>
     );
 }
 

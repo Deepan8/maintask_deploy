@@ -1,26 +1,42 @@
 import {
     Button, Hydrocodone, Hydro,Generic,HydroHeader, AlertMessages, Img, HydroContent,
     Alerts, Inputs, AlertText, InputLabel, Note, Count, Select, Buttons, ButtonContent,
-    GenericLink,Information,TherapyInfo
+    GenericLink,Information,TherapyInfo,Heading,Para
 } from "./hydrostyle"
 import { images } from "../../../../resources/images"
 
 import { hydro } from "../../../../resources/string"
+import { useRef,useState } from "react"
 
 
 
 export default function Hydroco() {
+    const valid = useRef();
+    const [iserror,setiserror]= useState({});
+
+ const handleClick = () => {
+   setiserror(validate(valid.current.value))
+ }
+   const validate = (valid) => {
+    const err={};
+    
+    if (valid < 0) {
+    err.valid='please enter the positive number';
+    }
+   return err;
+   }
+
     return (
         <>
         <Hydrocodone>
             <Hydro>
                 <HydroHeader>
-                <h2>{hydro.hydroTitle}</h2>
+                <Heading>{hydro.hydroTitle}</Heading>
                 <Generic>GENERIC</Generic>
                 </HydroHeader>
                 <HydroContent>
                     <Alerts>
-                        <h3>{hydro.alerts}</h3>
+                        <Para>{hydro.alerts}</Para>
                         <AlertMessages>
                             <Img src={images.Coin} alt="money" />
                             <AlertText>{hydro.costSaving} <GenericLink>{hydro.link}</GenericLink></AlertText>
@@ -35,7 +51,8 @@ export default function Hydroco() {
                     <Inputs>
                         <div>
                             <InputLabel>{hydro.quantity}</InputLabel>
-                            <Count type="number" />
+                            <Count type="number" ref={valid}/>
+                            <p>{iserror.valid}</p>
                         </div>
 
                         <div>
@@ -62,7 +79,7 @@ export default function Hydroco() {
                             <Note>{hydro.date}</Note>
                         </div>
 
-                        <Button>Add Drug to List</Button>
+                        <Button onClick={handleClick} >Add Drug to List</Button>
                     </Inputs>
                 </HydroContent>
             </Hydro>

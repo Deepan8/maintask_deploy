@@ -18,22 +18,22 @@ border-radius: 5px;
 
 export const Coverage = styled.div`
 display: flex;
-
 `;
+export const Totall = styled.div`
+   margin: -8px; 
+`
 export const Let = styled.h3`
 display: flex;
-
+padding: 1px 1px 1px 45px;
 `;
 export const Question = styled.h1`
 display: flex;
-
+padding: 1px 1px 1px 45px;
 `;
 export const Search = styled.div`
 width: 80%;
 `;
 export const Total = styled.div`
-/* position: relative; */
-
 `;
 
 export const Whitebox = styled.div`
@@ -42,14 +42,13 @@ width:90%;
 border-radius: 5px;
 margin: 0 auto;
 box-shadow: 1px 1px 1px 1px;
-/* position: absolute; */
-/* margin: 125px 0px 0px 0px; */
-/* top: 50px; */
+
 `;
 
 export const Titlebox = styled.div`
 display: flex;
 flex-direction: column;
+
 `;
 
 export const Combothree = styled.div`
@@ -57,8 +56,10 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 padding: 30px;
-
-
+@media (max-width:590px) {
+    display: flex;
+flex-direction: column;
+}
 `;
 
 
@@ -113,6 +114,11 @@ object-fit:contain;`
 export const Inputtag = styled.input`
 width: 130%;
 height:30px;
+@media (max-width:590px) {
+    width: 100%;
+
+
+  }
 `
 export const Information = styled.div`
 padding-left:4rem;`
