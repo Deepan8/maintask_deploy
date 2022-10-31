@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/react_main_task1/static/css/main.abd64e84.css",
-    "main.js": "/react_main_task1/static/js/main.0b517b2e.js",
-    "index.html": "/react_main_task1/index.html",
-    "main.abd64e84.css.map": "/react_main_task1/static/css/main.abd64e84.css.map",
-    "main.0b517b2e.js.map": "/react_main_task1/static/js/main.0b517b2e.js.map"
+    "main.css": "/react_main_task/static/css/main.f3053175.css",
+    "main.js": "/react_main_task/static/js/main.814a4a3f.js",
+    "static/media/LexendDeca-Bold.ttf": "/react_main_task/static/media/LexendDeca-Bold.3efe671173dc80030f08.ttf",
+    "static/media/LexendDeca-Regular.ttf": "/react_main_task/static/media/LexendDeca-Regular.2869b59dda2db5e596d0.ttf",
+    "index.html": "/react_main_task/index.html",
+    "main.f3053175.css.map": "/react_main_task/static/css/main.f3053175.css.map",
+    "main.814a4a3f.js.map": "/react_main_task/static/js/main.814a4a3f.js.map"
   },
   "entrypoints": [
-    "static/css/main.abd64e84.css",
-    "static/js/main.0b517b2e.js"
+    "static/css/main.f3053175.css",
+    "static/js/main.814a4a3f.js"
   ]
 }
